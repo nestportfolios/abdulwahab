@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Wahab — Web Developer</title>
+    <meta name="description" content="Abdul Wahab is a web developer who builds beautiful, user-centric websites with stunning UX and UI design.">
+    <meta name="keywords" content="Abdul Wahab, Web Developer, Portfolio, UX Design, UI Design, Frontend Developer">
+    <meta name="author" content="Abdul Wahab">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                <rect width="60" height="60" x="2" y="2" rx="14" fill="transparent" stroke="#FDB813" stroke-width="2" class="preloader__rect"/>
+                <text x="32" y="34" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="#FDB813" text-anchor="middle" dominant-baseline="middle" class="preloader__text">AW</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Cursor Spotlight -->
+    <div id="spotlight"></div>
+
+    <div class="layout">
+        <!-- ===== LEFT SIDEBAR (Fixed) ===== -->
+        <header class="sidebar" id="sidebar">
+            <div class="sidebar__inner">
+                <div class="sidebar__top">
+                    <h1 class="sidebar__name">
+                        <a href="/">Abdul Wahab</a>
+                    </h1>
+                    <h2 class="sidebar__title">Web Developer</h2>
+                    <p class="sidebar__tagline">I build personal portfolio, business websites with stunning UX & UI design.</p>
+                </div>
+
+                <nav class="sidebar__nav" aria-label="In-page jump links">
+                    <ul>
+                        <li>
+                            <a href="#about" class="nav-link active">
+                                <span class="nav-indicator"></span>
+                                <span class="nav-text">About</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#skills" class="nav-link">
+                                <span class="nav-indicator"></span>
+                                <span class="nav-text">Skills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#projects" class="nav-link">
+                                <span class="nav-indicator"></span>
+                                <span class="nav-text">Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="nav-link">
+                                <span class="nav-indicator"></span>
+                                <span class="nav-text">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <ul class="sidebar__socials" aria-label="Social media">
+                    <li>
+                        <a href="https://wa.me/923090757010" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (opens in a new tab)" title="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="26" height="26">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="assets/Abdul_Wahab_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume (opens in a new tab)" title="Resume">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ===== RIGHT CONTENT (Scrollable) ===== -->
+        <main id="content" class="main-content">
+
+            <!-- ABOUT -->
+            <section id="about" class="section" aria-label="About me">
+                <div class="section__sticky-header">
+                    <h2 class="section__heading">About</h2>
+                </div>
+                <div class="section__content">
+                    <p>
+                        I'm a passionate <span class="highlight">web developer</span> with over <span class="highlight">15+ completed projects</span> under my belt. I believe the best thing about web development is the power to craft interfaces that truly resonate with users, where every pixel, transition, and interaction feels intentional and delightful.
+                    </p>
+                    <p>
+                        My primary focus is on building websites with <span class="highlight">stunning UX and UI design</span>. I especially enjoy developing and designing <span class="highlight">personal portfolio websites</span> that help professionals showcase their work with confidence and style.
+                    </p>
+                    <p>
+                        From coaching academies to bakeries, from medical professionals to engineers, I've had the privilege of working with diverse clients, turning their visions into beautiful, functional digital experiences. Every project is an opportunity to push the boundaries of what's possible on the web.
+                    </p>
+                    <p>
+                        When I'm not coding, I'm exploring the latest design trends, studying color theory, or experimenting with new animation libraries to keep my work at the cutting edge.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section id="skills" class="section" aria-label="Skills">
+                <div class="section__sticky-header">
+                    <h2 class="section__heading">Skills</h2>
+                </div>
+                <div class="section__content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Languages</h3>
+                            <ul class="tag-list">
+                                <li class="tag">HTML5</li>
+                                <li class="tag">CSS3</li>
+                                <li class="tag">JavaScript</li>
+                                <li class="tag">Python</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Frameworks & Libraries</h3>
+                            <ul class="tag-list">
+                                <li class="tag">Bootstrap</li>
+                                <li class="tag">Tailwind CSS</li>
+                                <li class="tag">React</li>
+                                <li class="tag">jQuery</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Tools & Platforms</h3>
+                            <ul class="tag-list">
+                                <li class="tag">Git & GitHub</li>
+                                <li class="tag">VS Code</li>
+                                <li class="tag">Figma</li>
+                                <li class="tag">GitHub Pages</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Specialization</h3>
+                            <ul class="tag-list">
+                                <li class="tag">UX/UI Design</li>
+                                <li class="tag">Responsive Design</li>
+                                <li class="tag">Portfolio Websites</li>
+                                <li class="tag">Micro-Animations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section id="projects" class="section" aria-label="Selected projects">
+                <div class="section__sticky-header">
+                    <h2 class="section__heading">Projects</h2>
+                </div>
+                <div class="section__content">
+                    <ul class="project-list">
+
+                        <!-- Project 1 -->
+                        <li>
+                            <a class="project-card" href="https://draudaialtaie.com/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/draudai.webp" alt="Dr. Audai Al-Taie website screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Dr. Audai Al-Taie
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A professional medical portfolio website for Dr. Audai Al-Taie, featuring credentials, specializations, patient testimonials, and appointment booking, designed with trust and authority in mind.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Custom Domain</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 2 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/mcakes_dikhan/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/mcakes.webp" alt="MCakes website screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        MCakes Artisan Cakes
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        An artisan bakery website for a celebration cakes business in D.I. Khan, showcasing a rich gallery of custom cakes, flavors menu, and an ordering system with mouth watering visuals and smooth animations.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">UI/UX Design</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 3 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/HCA-DIKhan/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/hca.webp" alt="Hadi Coaching Academy website screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Hadi Coaching Academy
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A bilingual Urdu English educational platform for a coaching academy in D.I. Khan, featuring course listings, faculty showcase, and student admission portal with a modern, accessible design.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Bootstrap</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 4 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/al-falah-wood-supplier/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/alfalah.webp" alt="Al-Falah Woods Suppliers website screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Al-Falah Woods Suppliers
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A premium business website for a firewood and timber supply company in Tando Allahyar, featuring product catalog, quality certifications, and supply chain information with elegant wood toned aesthetics.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Responsive</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 5 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/ahmad_alam/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/ahmadalam.webp" alt="Engr. Ahmad Alam portfolio screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Engr. Ahmad Alam Portfolio
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A personal portfolio website for a Civil Engineer showcasing construction projects, professional certifications, and engineering expertise with a clean, modern layout and strong visual hierarchy.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Portfolio</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 6 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/Moazam-Raffique/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/moazam.webp" alt="Moazam Raffique portfolio screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Moazam Raffique Inspector Portfolio
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A professional portfolio for a Welding Inspector featuring project documentation, certification gallery, and industrial experience showcase with a robust, industry appropriate design language.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Portfolio</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Project 7 -->
+                        <li>
+                            <a class="project-card" href="https://nestportfolios.github.io/WajahatUllah/" target="_blank" rel="noopener noreferrer">
+                                <div class="project-card__image-wrapper">
+                                    <img src="assets/wajahat.webp" alt="Wajahat Ullah portfolio screenshot" loading="lazy" width="200" height="120">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Wajahat Ullah Chemical Engineer
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="project-card__arrow" aria-hidden="true" width="16" height="16">
+                                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </h3>
+                                    <p class="project-card__description">
+                                        A personal portfolio for a Chemical Engineer showcasing research, industrial projects, and professional qualifications with a clean design that balances technical depth with visual clarity.
+                                    </p>
+                                    <ul class="tag-list" aria-label="Technologies used">
+                                        <li class="tag">HTML</li>
+                                        <li class="tag">CSS</li>
+                                        <li class="tag">JavaScript</li>
+                                        <li class="tag">Portfolio</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CONTACT -->
+            <section id="contact" class="section" aria-label="Contact">
+                <div class="section__sticky-header">
+                    <h2 class="section__heading">Get In Touch</h2>
+                </div>
+                <div class="section__content">
+                    <p>
+                        I'm currently open to new freelance opportunities and collaborations. Whether you need a personal portfolio, a business website, or just want to say hello, my inbox is always open. I'll do my best to get back to you as soon as possible!
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/923090757010" target="_blank" rel="noopener noreferrer" class="contact-button" id="contact-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Say Hi
+                        </a>
+                        <a href="assets/Abdul_Wahab_Resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-button" id="resume-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
