@@ -111,8 +111,7 @@
        ══════════════════════════════════════ */
     // Calculate slide step dynamically matching the CSS layout
     function vh() { 
-        var isMobile = window.innerWidth <= 768;
-        return isMobile ? slider.clientHeight * 0.58 : slider.clientHeight * 0.70;
+        return slides[0].offsetHeight || (slider.clientHeight * 0.70);
     }
 
     function maxTy() { return -(TOTAL - 1) * vh(); }
@@ -170,6 +169,8 @@
 
     function onMove(e) {
         if (!dragging) return;
+        if (e.cancelable) e.preventDefault();
+
         var y   = gy(e);
         var now = Date.now();
         var dt  = now - lastT;
@@ -199,12 +200,22 @@
         dragging = false;
         slider.classList.remove('dragging');
 
-        var momentum  = vel * 200;
-        var projected = ty + momentum;
-        var target    = Math.round(Math.abs(projected) / vh());
-        target = Math.max(0, Math.min(target, TOTAL - 1));
+        var diff = lastY - startY;
+        var step = vh();
+        var target = current;
 
-        prevTy = ty;
+        // Intuitive swipe threshold: 40px drag or velocity flick
+        if (diff < -40 || vel < -0.25) {
+            target = current + 1;
+        } else if (diff > 40 || vel > 0.25) {
+            target = current - 1;
+        } else {
+            var momentum  = vel * 150;
+            var projected = ty + momentum;
+            target = Math.round(Math.abs(projected) / step);
+        }
+
+        target = Math.max(0, Math.min(target, TOTAL - 1));
         goTo(target);
     }
 
