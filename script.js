@@ -109,12 +109,10 @@
     /* ══════════════════════════════════════
        4. SLIDER CORE (VERTICAL)
        ══════════════════════════════════════ */
-    // Calculate slide step dynamically based on actual CSS layout to fix mobile vh inconsistencies
+    // Calculate slide step dynamically matching the CSS layout
     function vh() { 
-        if (slides.length > 1) {
-            return slides[1].offsetTop - slides[0].offsetTop;
-        }
-        return window.innerHeight * 0.7; // fallback
+        var isMobile = window.innerWidth <= 768;
+        return isMobile ? slider.clientHeight * 0.58 : slider.clientHeight * 0.70;
     }
 
     function maxTy() { return -(TOTAL - 1) * vh(); }
