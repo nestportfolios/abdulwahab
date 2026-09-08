@@ -247,12 +247,17 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
     flex-direction: column;
     height: 100%;
     will-change: transform;
+    /* 10vh top padding perfectly centers an 80vh slide vertically */
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 .slide {
-    flex: 0 0 100vh;
+    flex: 0 0 80vh;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
+    /* Negative margin reduces the spacing between slides to 70vh, creating a 20vh peek */
+    margin-bottom: -10vh;
     position: relative;
     padding: 0 var(--pad);
     z-index: 1;
@@ -644,8 +649,8 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
     .slide-inner {
         flex-direction: column;
         justify-content: center;
-        /* Push content down so it clears the topbar on 100vh slides */
-        padding-top: calc(var(--nav-h) + 1rem);
+        /* Let it naturally center in the 80vh space */
+        padding-top: 2rem;
     }
 
     .slide-text {
