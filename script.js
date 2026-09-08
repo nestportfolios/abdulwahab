@@ -109,8 +109,8 @@
     /* ══════════════════════════════════════
        4. SLIDER CORE (VERTICAL)
        ══════════════════════════════════════ */
-    // Slide step is 70vh because slide is 80vh with a -10vh margin-bottom
-    function vh() { return window.innerHeight * 0.7; }
+    // Slide step is 100vh (full screen)
+    function vh() { return window.innerHeight; }
 
     function maxTy() { return -(TOTAL - 1) * vh(); }
 
