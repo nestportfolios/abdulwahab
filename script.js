@@ -109,8 +109,13 @@
     /* ══════════════════════════════════════
        4. SLIDER CORE (VERTICAL)
        ══════════════════════════════════════ */
-    // Slide step is 100vh (full screen)
-    function vh() { return window.innerHeight; }
+    // Calculate slide step dynamically based on actual CSS layout to fix mobile vh inconsistencies
+    function vh() { 
+        if (slides.length > 1) {
+            return slides[1].offsetTop - slides[0].offsetTop;
+        }
+        return window.innerHeight * 0.7; // fallback
+    }
 
     function maxTy() { return -(TOTAL - 1) * vh(); }
 
