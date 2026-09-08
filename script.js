@@ -22,6 +22,16 @@
     var hamburger     = document.getElementById('hamburger');
     var logoBtn       = document.getElementById('logoBtn');
 
+    /* ══════════════════════════════════════
+       0. CSS VARIABLE SYNC
+       ══════════════════════════════════════ */
+    function setVh() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+
     var TOTAL   = slides.length;
     var current = 0;
     var ty      = 0;       // current translateY
@@ -111,7 +121,13 @@
        ══════════════════════════════════════ */
     // Calculate slide step dynamically matching the CSS layout
     function vh() { 
-        return slides[0].offsetHeight || (slider.clientHeight * 0.70);
+        if (window.matchMedia('(max-width: 480px)').matches) {
+            return window.innerHeight * 0.50;
+        } else if (window.matchMedia('(max-width: 768px)').matches) {
+            return window.innerHeight * 0.52;
+        } else {
+            return window.innerHeight * 0.70;
+        }
     }
 
     function maxTy() { return -(TOTAL - 1) * vh(); }
