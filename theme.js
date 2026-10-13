@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * THEME CONTROLLER — Light / Dark mode
- * Abdul Wahab Portfolio
+ * Nest Portfolios
  *   - Loaded in <head> so the saved theme is applied BEFORE first paint (no flash)
  *   - Light is the default; the choice is remembered in localStorage
  *   - Dark mode switches the storm canvas to its neon palette (see storm.js)
