@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * ELECTRIC STORM ENGINE (LIGHT + NEON DARK EDITIONS)
- * Abdul Wahab Portfolio — Atmospheric Background
+ * Nest Portfolios — Atmospheric Background
  * Features:
  *   - LIGHT MODE: Pure White Canvas (#ffffff) with Electric Black & Gold lightning
  *   - DARK MODE:  Deep night-sky canvas with NEON cyan / violet / magenta lightning,
