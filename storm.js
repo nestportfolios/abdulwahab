@@ -175,6 +175,7 @@
         initClouds();
         initParticles();
         initRainStreaks();
+        initSoundToggle();
         bindEvents();
         startLoop();
     }
@@ -244,10 +245,443 @@
         }
     }
 
+    /* ═══════════════════════════════════════════════════════════
+       REAL-WORLD ELECTRIC ACOUSTICS ENGINE (Web Audio API)
+       Authentic physical modeling of:
+         - Real electrostatic sparks & contact breakdown
+         - Supersonic lightning whip-crack & tearing plasma
+         - Rolling atmospheric multi-reflection thunder
+         - High-voltage mains arc & transformer plasma hum
+       ═══════════════════════════════════════════════════════════ */
+    let audioCtx = null;
+    let soundEnabled = true;
+    let lastZapTime = 0;
+    let lastStrikeSoundTime = 0;
+    let lastAmbientSoundTime = 0;
+
+    const realAudioBuffers = {
+        zap: null,
+        lightningCrack: null,
+        thunderRumble: null,
+        surge: null
+    };
+
+    // Load saved sound preference (default: true)
+    try {
+        const savedSound = localStorage.getItem('np_sound_fx');
+        if (savedSound === 'false') {
+            soundEnabled = false;
+        }
+    } catch (e) {}
+
+    /**
+     * Generate Real Electrostatic Discharge Spark Buffer
+     * Models supersonic impulse pressure shockwave + 5 stochastic micro-avalanches
+     */
+    function generateRealElectricZapBuffer(ctx) {
+        const sr = ctx.sampleRate;
+        const duration = 0.048; // 48ms
+        const numSamples = Math.floor(sr * duration);
+        const buffer = ctx.createBuffer(1, numSamples, sr);
+        const data = buffer.getChannelData(0);
+
+        const microSparks = [
+            { t: 0.0000, amp: 1.00, freq: 5200, decay: 0.0028 },
+            { t: 0.0028, amp: 0.65, freq: 4400, decay: 0.0025 },
+            { t: 0.0074, amp: 0.88, freq: 5800, decay: 0.0032 },
+            { t: 0.0135, amp: 0.42, freq: 3900, decay: 0.0030 },
+            { t: 0.0210, amp: 0.28, freq: 4900, decay: 0.0040 }
+        ];
+
+        for (let i = 0; i < numSamples; i++) {
+            const t = i / sr;
+            let s = 0;
+
+            for (let j = 0; j < microSparks.length; j++) {
+                const sp = microSparks[j];
+                const dt = t - sp.t;
+                if (dt >= 0) {
+                    const env = Math.exp(-dt / sp.decay);
+                    // Bipolar spark shockwave: steep positive rise, rapid negative undershoot
+                    const shock = (dt < 0.0006) ? (1 - dt / 0.0003) * 2.4 : 0;
+                    const ring = Math.sin(2 * Math.PI * sp.freq * dt);
+                    s += sp.amp * (shock * 0.7 + ring * 0.5) * env;
+                }
+            }
+
+            // High-voltage air ionization hiss
+            const hissEnv = Math.exp(-t / 0.018);
+            const hiss = (Math.random() * 2 - 1) * hissEnv * 0.35;
+            s += hiss;
+
+            // Non-linear air resistance saturation (tanh clipping)
+            data[i] = Math.tanh(s * 2.0) * 0.9;
+        }
+        return buffer;
+    }
+
+    /**
+     * Generate Real Supersonic Lightning Crack & Tearing Plasma Buffer
+     * Models stepped leader avalanche, explosive return stroke, and ripping canvas air tearing
+     */
+    function generateRealLightningCrackBuffer(ctx) {
+        const sr = ctx.sampleRate;
+        const duration = 0.38; // 380ms
+        const numSamples = Math.floor(sr * duration);
+        const buffer = ctx.createBuffer(1, numSamples, sr);
+        const data = buffer.getChannelData(0);
+
+        const strokes = [
+            { t: 0.000, amp: 0.80, freq: 2600, decay: 0.025 },
+            { t: 0.026, amp: 1.00, freq: 3200, decay: 0.045 },
+            { t: 0.082, amp: 0.85, freq: 2100, decay: 0.035 },
+            { t: 0.145, amp: 0.52, freq: 2800, decay: 0.030 }
+        ];
+
+        for (let i = 0; i < numSamples; i++) {
+            const t = i / sr;
+            let s = 0;
+
+            for (let j = 0; j < strokes.length; j++) {
+                const st = strokes[j];
+                const dt = t - st.t;
+                if (dt >= 0) {
+                    const env = Math.exp(-dt / st.decay);
+                    // Supersonic whip-crack blast transient
+                    const shock = (dt < 0.002) ? (1 - dt / 0.001) * 3.2 : (Math.random() - 0.5) * 0.65;
+                    const wave = Math.sin(2 * Math.PI * st.freq * dt);
+                    s += st.amp * (shock * 0.65 + wave * 0.4) * env;
+                }
+            }
+
+            // Ripping canvas plasma tearing noise (fractal air breakdown)
+            if (t < 0.28) {
+                const tearEnv = Math.exp(-t / 0.09);
+                const tearNoise = (Math.random() * 2 - 1) * (0.8 + 0.2 * Math.sin(t * 1400));
+                s += tearNoise * tearEnv * 0.55;
+            }
+
+            // High-voltage arc plasma buzz (120Hz + harmonics)
+            if (t > 0.02 && t < 0.22) {
+                const buzzEnv = Math.exp(-(t - 0.02) / 0.06);
+                const buzz = Math.sin(2 * Math.PI * 120 * t) + 0.5 * Math.sin(2 * Math.PI * 360 * t) + 0.3 * Math.sin(2 * Math.PI * 600 * t);
+                s += buzz * buzzEnv * 0.4;
+            }
+
+            data[i] = Math.tanh(s * 2.4) * 0.92;
+        }
+        return buffer;
+    }
+
+    /**
+     * Generate Real Rolling Atmospheric Thunder Buffer
+     * Models Brownian low-frequency blast dispersion & cloud/ground acoustic multi-reflections
+     */
+    function generateRealThunderRumbleBuffer(ctx) {
+        const sr = ctx.sampleRate;
+        const duration = 2.4; // 2.4 seconds
+        const numSamples = Math.floor(sr * duration);
+        const buffer = ctx.createBuffer(1, numSamples, sr);
+        const data = buffer.getChannelData(0);
+
+        let brown = 0;
+        for (let i = 0; i < numSamples; i++) {
+            const t = i / sr;
+            // Brownian acoustic noise integration (true atmospheric low rumble)
+            const white = Math.random() * 2 - 1;
+            brown = (brown + 0.035 * white) / 1.035;
+
+            // Natural multi-envelope peaks from tortuous lightning channel paths
+            const env1 = (t < 0.06 ? t / 0.06 : Math.exp(-(t - 0.06) / 0.32)) * 0.95;
+            const env2 = (t > 0.25 ? Math.exp(-Math.pow((t - 0.52) / 0.22, 2)) : 0) * 0.70;
+            const env3 = (t > 0.70 ? Math.exp(-Math.pow((t - 1.18) / 0.40, 2)) : 0) * 0.50;
+
+            const totalEnv = (env1 + env2 + env3) * Math.exp(-t / 1.35);
+
+            // Sub-bass resonance (42Hz - 54Hz modulated)
+            const subFreq = 46 + Math.sin(t * 4.2) * 8;
+            const sub = Math.sin(2 * Math.PI * subFreq * t) * 0.35;
+
+            data[i] = (brown * 0.72 + sub * 0.28) * totalEnv * 1.6;
+        }
+        return buffer;
+    }
+
+    /**
+     * Generate Real High-Voltage Substation Arc Surge Buffer
+     * Models 60Hz/120Hz AC mains power arc, chaotic arc sizzling, and transformer plasma hum
+     */
+    function generateRealSurgeBuffer(ctx) {
+        const sr = ctx.sampleRate;
+        const duration = 0.58; // 580ms
+        const numSamples = Math.floor(sr * duration);
+        const buffer = ctx.createBuffer(1, numSamples, sr);
+        const data = buffer.getChannelData(0);
+
+        for (let i = 0; i < numSamples; i++) {
+            const t = i / sr;
+            // Initial contact spark click
+            const initSpark = (t < 0.004) ? (1 - t / 0.002) * (Math.random() * 2 - 1) * 2.2 : 0;
+
+            // Intense 60Hz/120Hz high-voltage electrical substation arc buzz
+            const env = Math.exp(-t / 0.28) * (1 - Math.exp(-t / 0.02));
+            const f = 60;
+            let buzz = Math.sin(2 * Math.PI * f * t)
+                + 0.8 * Math.sin(2 * Math.PI * (f * 2) * t)
+                + 0.6 * Math.sin(2 * Math.PI * (f * 3) * t)
+                + 0.5 * Math.sin(2 * Math.PI * (f * 5) * t)
+                + 0.4 * Math.sin(2 * Math.PI * (f * 7) * t);
+
+            // Chaotic arc sizzling & sputtering
+            const sputter = (Math.random() * 2 - 1) * (Math.sin(2 * Math.PI * 120 * t) > 0.4 ? 0.7 : 0.1);
+
+            const total = initSpark + (buzz * 0.65 + sputter * 0.35) * env;
+            data[i] = Math.tanh(total * 2.2) * 0.88;
+        }
+        return buffer;
+    }
+
+    function initRealAudioBuffers(ctx) {
+        if (realAudioBuffers.zap) return;
+        try {
+            realAudioBuffers.zap = generateRealElectricZapBuffer(ctx);
+            realAudioBuffers.lightningCrack = generateRealLightningCrackBuffer(ctx);
+            realAudioBuffers.thunderRumble = generateRealThunderRumbleBuffer(ctx);
+            realAudioBuffers.surge = generateRealSurgeBuffer(ctx);
+        } catch (e) {
+            console.warn('Real audio buffer initialization failed:', e);
+        }
+    }
+
+    function getAudioContext() {
+        if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (AudioContextClass) {
+                audioCtx = new AudioContextClass();
+                initRealAudioBuffers(audioCtx);
+            }
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        return audioCtx;
+    }
+
+    /**
+     * 1. Real Electrostatic Snap (ONLY on Interactive UI Clicks)
+     * True supersonic micro-spark avalanche — crisp, real, zero synth pitch-drops
+     */
+    function playClickZap(x) {
+        if (!soundEnabled || document.hidden) return;
+        const nowMs = performance.now();
+        if (nowMs - lastZapTime < 45) return;
+        lastZapTime = nowMs;
+
+        const ctx = getAudioContext();
+        if (!ctx || ctx.state !== 'running' || !realAudioBuffers.zap) return;
+
+        const now = ctx.currentTime;
+        const source = ctx.createBufferSource();
+        source.buffer = realAudioBuffers.zap;
+
+        // Clean highpass filter to keep only razor-sharp electrostatic crackle
+        const hpFilter = ctx.createBiquadFilter();
+        hpFilter.type = 'highpass';
+        hpFilter.frequency.setValueAtTime(800, now);
+
+        const gain = ctx.createGain();
+        const vol = 0.16 + (Math.random() - 0.5) * 0.04;
+        gain.gain.setValueAtTime(vol, now);
+
+        // Dynamic stereo panning based on cursor position
+        if (ctx.createStereoPanner && typeof x === 'number' && window.innerWidth) {
+            const panner = ctx.createStereoPanner();
+            const pan = Math.max(-0.85, Math.min(0.85, (x / window.innerWidth) * 2 - 1));
+            panner.pan.setValueAtTime(pan, now);
+            source.connect(hpFilter);
+            hpFilter.connect(gain);
+            gain.connect(panner);
+            panner.connect(ctx.destination);
+        } else {
+            source.connect(hpFilter);
+            hpFilter.connect(gain);
+            gain.connect(ctx.destination);
+        }
+
+        // Slight organic pitch variation (+/- 7%) for natural spark ionization variety
+        source.playbackRate.setValueAtTime(0.95 + Math.random() * 0.10, now);
+        source.start(now);
+    }
+
+    /**
+     * 2. Real Distant Rolling Thunder (Rare ambient storm background roll)
+     * Atmospheric low-frequency pressure wave rolling across the horizon
+     */
+    function playDistantThunder(x) {
+        if (!soundEnabled || document.hidden || !realAudioBuffers.thunderRumble) return;
+        const ctx = getAudioContext();
+        if (!ctx || ctx.state !== 'running') return;
+
+        const now = ctx.currentTime;
+        const thunderSource = ctx.createBufferSource();
+        thunderSource.buffer = realAudioBuffers.thunderRumble;
+        thunderSource.playbackRate.setValueAtTime(0.85 + Math.random() * 0.10, now);
+
+        // Distant air absorption: strict lowpass < 95Hz
+        const lp = ctx.createBiquadFilter();
+        lp.type = 'lowpass';
+        lp.frequency.setValueAtTime(95, now);
+        lp.frequency.linearRampToValueAtTime(50, now + 2.2);
+
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.08, now); // Soft atmospheric distant roll
+
+        thunderSource.connect(lp);
+        lp.connect(gain);
+
+        if (ctx.createStereoPanner && typeof x === 'number' && window.innerWidth) {
+            const panner = ctx.createStereoPanner();
+            const pan = Math.max(-0.8, Math.min(0.8, (x / window.innerWidth) * 2 - 1));
+            panner.pan.setValueAtTime(pan, now);
+            gain.connect(panner);
+            panner.connect(ctx.destination);
+        } else {
+            gain.connect(ctx.destination);
+        }
+
+        thunderSource.start(now);
+    }
+
+    /**
+     * 3. Real Lightning Discharge & Thunder (Direct User Trigger / Theme Surge)
+     * Supersonic whip-crack plasma tear + rolling atmospheric thunder boom
+     */
+    function playStrikeSound(x, options) {
+        if (!soundEnabled || document.hidden) return;
+        const nowMs = performance.now();
+        if (nowMs - lastStrikeSoundTime < 220) return;
+        lastStrikeSoundTime = nowMs;
+
+        const ctx = getAudioContext();
+        if (!ctx || ctx.state !== 'running') return;
+
+        const isTheme = options && options.type === 'theme';
+        const now = ctx.currentTime;
+
+        let destNode = ctx.destination;
+        if (ctx.createStereoPanner && typeof x === 'number' && window.innerWidth) {
+            const panner = ctx.createStereoPanner();
+            const pan = Math.max(-0.85, Math.min(0.85, (x / window.innerWidth) * 2 - 1));
+            panner.pan.setValueAtTime(pan, now);
+            panner.connect(ctx.destination);
+            destNode = panner;
+        }
+
+        if (isTheme && realAudioBuffers.surge) {
+            // High-voltage substation electric arc surge
+            const surgeSource = ctx.createBufferSource();
+            surgeSource.buffer = realAudioBuffers.surge;
+            const surgeGain = ctx.createGain();
+            surgeGain.gain.setValueAtTime(0.24, now);
+            surgeSource.connect(surgeGain);
+            surgeGain.connect(destNode);
+            surgeSource.start(now);
+            return;
+        }
+
+        // A. Violent Supersonic Lightning Tear & Arc Shock
+        if (realAudioBuffers.lightningCrack) {
+            const crackSource = ctx.createBufferSource();
+            crackSource.buffer = realAudioBuffers.lightningCrack;
+            crackSource.playbackRate.setValueAtTime(0.96 + Math.random() * 0.08, now);
+
+            const crackGain = ctx.createGain();
+            crackGain.gain.setValueAtTime(0.26, now);
+
+            crackSource.connect(crackGain);
+            crackGain.connect(destNode);
+            crackSource.start(now);
+        }
+
+        // B. Rolling Acoustic Atmospheric Thunder
+        if (realAudioBuffers.thunderRumble) {
+            const thunderSource = ctx.createBufferSource();
+            thunderSource.buffer = realAudioBuffers.thunderRumble;
+            thunderSource.playbackRate.setValueAtTime(0.92 + Math.random() * 0.14, now);
+
+            const lp = ctx.createBiquadFilter();
+            lp.type = 'lowpass';
+            lp.frequency.setValueAtTime(140, now);
+            lp.frequency.linearRampToValueAtTime(70, now + 2.0);
+
+            const thunderGain = ctx.createGain();
+            thunderGain.gain.setValueAtTime(0.32, now);
+
+            thunderSource.connect(lp);
+            lp.connect(thunderGain);
+            thunderGain.connect(destNode);
+            thunderSource.start(now + 0.03); // Acoustic delay
+        }
+    }
+
+    function syncSoundToggleUI() {
+        const toggles = document.querySelectorAll('.sound-toggle');
+        toggles.forEach(btn => {
+            btn.classList.toggle('muted', !soundEnabled);
+            btn.setAttribute('aria-checked', String(soundEnabled));
+            btn.setAttribute('aria-label', soundEnabled ? 'Mute electric sound FX' : 'Unmute electric sound FX');
+            btn.setAttribute('title', soundEnabled ? 'Electric Sound FX: Active (Click to mute)' : 'Electric Sound FX: Muted (Click to enable)');
+        });
+    }
+
+    function toggleSound() {
+        soundEnabled = !soundEnabled;
+        try {
+            localStorage.setItem('np_sound_fx', String(soundEnabled));
+        } catch (e) {}
+        syncSoundToggleUI();
+        if (soundEnabled) {
+            getAudioContext();
+            playClickZap(window.innerWidth / 2);
+        }
+    }
+
+    function initSoundToggle() {
+        const themeBtn = document.getElementById('themeToggle');
+        if (themeBtn && !document.getElementById('soundToggle')) {
+            const btn = document.createElement('button');
+            btn.className = 'sound-toggle';
+            btn.id = 'soundToggle';
+            btn.type = 'button';
+            btn.role = 'switch';
+            btn.setAttribute('aria-checked', String(soundEnabled));
+            btn.setAttribute('aria-label', soundEnabled ? 'Mute electric sound FX' : 'Unmute electric sound FX');
+            btn.setAttribute('title', soundEnabled ? 'Electric Sound FX: Active (Click to mute)' : 'Electric Sound FX: Muted (Click to enable)');
+            btn.innerHTML = `
+                <svg class="sound-icon sound-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <svg class="sound-icon sound-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+            `;
+            themeBtn.parentElement.insertBefore(btn, themeBtn);
+        }
+
+        document.querySelectorAll('.sound-toggle').forEach(btn => {
+            btn.removeEventListener('click', toggleSound);
+            btn.addEventListener('click', toggleSound);
+        });
+        syncSoundToggleUI();
+    }
+
     /**
      * Generate Fractal Branching Lightning
      */
-    function createLightningStrike(startX, startY, targetX, targetY, isPowerful = false) {
+    function createLightningStrike(startX, startY, targetX, targetY, isPowerful = false, source = 'ambient') {
         const segments = [];
 
         function buildBranch(x1, y1, x2, y2, depth, maxDepth, branchAlpha) {
@@ -307,6 +741,23 @@
 
         activeStrikes.push(strike);
 
+        // Logical Sound Dispatch:
+        if (source === 'interactive') {
+            // Immediate, punchy electric discharge summoned by user click
+            playStrikeSound(targetX, { isPowerful: true, type: 'interactive' });
+        } else if (source === 'theme') {
+            // Electrifying power surge on theme transition
+            playStrikeSound(targetX, { isPowerful: true, type: 'theme' });
+        } else if (source === 'ambient') {
+            // Ambient natural storm: only rare powerful strikes trigger distant thunder (min 28s cooldown)
+            // Keeps the site peaceful, beautiful, and atmospheric without annoying random noises
+            const nowMs = performance.now();
+            if (isPowerful && (nowMs - lastAmbientSoundTime > 28000)) {
+                lastAmbientSoundTime = nowMs;
+                playDistantThunder(targetX);
+            }
+        }
+
         // Flash ambient illumination
         ambientFlash = Math.max(ambientFlash, isPowerful ? 0.85 : 0.55);
         ambientFlashX = targetX / width;
@@ -322,7 +773,7 @@
         const originY = -15;
 
         if (isSheet) {
-            // Sheet lightning: illuminates the sky with a burst
+            // Sheet lightning: illuminates the sky with a burst (visual only)
             ambientFlash = 0.5 + Math.random() * 0.3;
             ambientFlashX = originX / width;
             ambientFlashY = 0.15 + Math.random() * 0.25;
@@ -330,14 +781,14 @@
             if (Math.random() > 0.4) {
                 const destX = originX + (Math.random() - 0.5) * (width * 0.35);
                 const destY = height * (0.15 + Math.random() * 0.25);
-                createLightningStrike(originX, originY, destX, destY, false);
+                createLightningStrike(originX, originY, destX, destY, false, 'ambient');
             }
         } else {
-            // Ground/sky lightning bolt
+            // Ground/sky lightning bolt (ambient)
             const targetX = originX + (Math.random() - 0.5) * (width * 0.45);
             const targetY = height * (0.55 + Math.random() * 0.4);
             const isPowerful = Math.random() < 0.35;
-            createLightningStrike(originX, originY, targetX, targetY, isPowerful);
+            createLightningStrike(originX, originY, targetX, targetY, isPowerful, 'ambient');
         }
 
         // Schedule next random strike
@@ -351,7 +802,7 @@
     function triggerInteractiveStrike(x, y) {
         const originX = x + (Math.random() - 0.5) * 200;
         const originY = -10;
-        createLightningStrike(originX, originY, x, y, true);
+        createLightningStrike(originX, originY, x, y, true, 'interactive');
     }
 
     /**
@@ -677,24 +1128,47 @@
             mouse.active = false;
         });
 
-        // Click or Tap triggers an instant electric strike toward cursor
+        // Unlock Web Audio context on first user gesture
+        const unlockAudio = () => {
+            getAudioContext();
+            window.removeEventListener('pointerdown', unlockAudio);
+            window.removeEventListener('keydown', unlockAudio);
+        };
+        window.addEventListener('pointerdown', unlockAudio, { passive: true });
+        window.addEventListener('keydown', unlockAudio, { passive: true });
+
+        // Logical Click Sound Dispatcher:
+        // 1. Interactive UI clicks -> crisp tactile electric micro-zap
+        // 2. Canvas / Backdrop clicks -> interactive lightning strike to cursor with electric thunder discharge
         window.addEventListener('click', (e) => {
-            // Don't trigger if user clicked an interactive anchor or button
             const target = e.target;
-            if (target && (target.closest('a') || target.closest('button') || target.closest('input') || target.closest('.slide-link'))) {
+            const interactiveEl = target && target.closest(
+                'a, button, input, select, textarea, [role="button"], [role="switch"], [role="tab"], ' +
+                '.topbar__link, .topbar__name, .sound-toggle, .theme-toggle, .hamburger, ' +
+                '.filter-badge, .active-filter-badge__clear, .slide-btn, .slide-link, ' +
+                '.floating-wa, .pricing-card__cta, .hero-btn, .ab-profile-btn, .testimonial-card, ' +
+                '.card, .faq-item, .project-card, .btn, label'
+            );
+
+            if (interactiveEl) {
+                // User clicked an interactive UI control -> play tactile electric feedback zap
+                playClickZap(e.clientX);
                 return;
             }
+
+            // User clicked on empty canvas/background -> trigger interactive lightning bolt
+            // The bolt's strike handler will play the electric discharge sound logically!
             triggerInteractiveStrike(e.clientX, e.clientY);
         }, { passive: true });
 
         // Theme switch: re-size the canvas for the new theme's resolution cap;
-        // entering dark mode "powers up" the neon storm with a big bolt
+        // entering dark mode "powers up" the neon storm with a big bolt and surge sound
         window.addEventListener('themechange', (e) => {
             handleResize();
             if (prefersReducedMotion) return;
             if (e && e.detail && e.detail.theme === 'dark') {
                 const x = width * (0.3 + Math.random() * 0.4);
-                createLightningStrike(x, -15, x + (Math.random() - 0.5) * width * 0.2, height * 0.65, true);
+                createLightningStrike(x, -15, x + (Math.random() - 0.5) * width * 0.2, height * 0.65, true, 'theme');
             }
         });
     }
