@@ -1,0 +1,7 @@
+﻿{
+    "height":  1080,
+    "namePattern":  "frame_{0:D3}.jpg",
+    "width":  1920,
+    "fps":  24,
+    "frameCount":  82
+}
