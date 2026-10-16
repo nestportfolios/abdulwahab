@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Projects — Nest Portfolios | Web Developer & UI/UX Specialist</title>
+    <meta name="description" content="Explore live web projects and case studies built by Nest Portfolios across job-ready, business-ready, and high-paid client tiers.">
+    <meta name="author" content="Nest Portfolios">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects — Nest Portfolios | Web Developer">
+    <meta property="og:description" content="Interactive showcase of websites built with stunning UX & UI design.">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css?v=5.1">
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+
+    <!-- ═══ APP ═══ -->
+    <div class="app">
+
+        <!-- ─ Top Bar ─ -->
+        <header class="topbar">
+            <div class="topbar__inner">
+                <a class="topbar__name" href="../index.html" id="logoBtn">Nest Portfolios</a>
+                
+                <!-- Active category filter badge -->
+                <div class="active-filter-badge" id="activeFilterBadge" style="display: none;">
+                    <span class="active-filter-badge__icon">🎯</span>
+                    <span class="active-filter-badge__label" id="activeFilterName">Filtered</span>
+                    <button type="button" class="active-filter-badge__clear" id="clearFilterBtn" title="Reset to all projects" aria-label="Reset filter">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+
+                <div class="topbar__right">
+                    <a class="topbar__link desktop-only" href="../index.html">
+                        Home
+                    </a>
+                    <a class="topbar__link desktop-only active" href="projects.html">
+                        Projects
+                    </a>
+                    <a class="topbar__link desktop-only" href="pricing.html">
+                        Pricing
+                    </a>
+                    <a class="topbar__link desktop-only" href="reviews.html">
+                        Reviews
+                    </a>
+                    <button class="sound-toggle" id="soundToggle" type="button" role="switch" aria-checked="true"
+                        aria-label="Mute electric sound FX" title="Electric Sound FX: Active (Click to mute)">
+                        <svg class="sound-icon sound-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <svg class="sound-icon sound-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false"
+                        aria-label="Switch to dark mode" title="Switch to dark mode">
+                        <span class="theme-toggle__thumb" aria-hidden="true">
+                            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="4" />
+                                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                            </svg>
+                            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ─ Pagination dots ─ -->
+        <div class="pagination" id="dots"></div>
+
+        <!-- ─ Slides layer ─ -->
+        <div class="slides-layer revealed" id="slidesLayer">
+
+            <!-- Background color panels -->
+            <div class="bg-stack" id="bgStack">
+                <div class="bg-panel active" data-category="job-ready" style="background:#3d6681"></div>
+                <div class="bg-panel" data-category="job-ready" style="background:#2f4a7a"></div>
+                <div class="bg-panel" data-category="business-ready" style="background:#804a4e"></div>
+                <div class="bg-panel" data-category="high-paid business-ready" style="background:#3b5a4b"></div>
+                <div class="bg-panel" data-category="business-ready" style="background:#684e3a"></div>
+                <div class="bg-panel" data-category="job-ready" style="background:#404a57"></div>
+                <div class="bg-panel" data-category="job-ready" style="background:#363945"></div>
+                <div class="bg-panel" data-category="job-ready" style="background:#2c4a52"></div>
+                <div class="bg-panel" data-category="business-ready" style="background:#1d4860"></div>
+                <div class="bg-panel" data-category="business-ready" style="background:#322b52"></div>
+                <div class="bg-panel" data-category="business-ready" style="background:#5e341c"></div>
+            </div>
+
+            <!-- Draggable slider -->
+            <div class="slider" id="slider">
+                <div class="track" id="track">
+
+                    <!-- Slide 1: Dr. Audai -->
+                    <div class="slide active" data-category="job-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-job-ready">Job Ready</span>
+                                </div>
+                                <h2 class="slide-title">Dr. Audai</h2>
+                                <p class="slide-desc">A professional medical portfolio with credentials, patient testimonials, and appointment booking.</p>
+                                <a class="slide-link" href="https://draudaialtaie.com/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup has-flip" style="border-color:#4a8ab5">
+                                        <div class="mockup-flipper">
+                                            <div class="mockup-front">
+                                                <img src="../assets/draudai.webp" alt="Dr. Audai Al-Taie">
+                                                <div class="mockup-reflection"></div>
+                                                <div class="review-hint-badge">
+                                                    <span class="review-hint-star">★</span>
+                                                    <span>Client Review</span>
+                                                    <svg class="review-hint-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-back">
+                                                <div class="review-card">
+                                                    <svg class="review-card__quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                                                    <div class="review-card__header">
+                                                        <div class="review-card__stars" aria-label="5 out of 5 stars">
+                                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                        </div>
+                                                        <span class="review-card__badge">Verified Review</span>
+                                                    </div>
+                                                    <div class="review-card__body">
+                                                        <p class="review-card__text">“I’m extremely impressed with the online portfolio Abdul created for me. He delivered a fully customizable, beautifully structured portfolio that truly highlights my strengths and organizes my achievements in a professional, compelling way. The shareable link is perfect for applications, and having the option of a PDF/Docx made everything even more convenient. What stood out most was Abdul’s support with writing and structuring my content. He didn’t just design the portfolio he helped refine my story and present it with maximum impact. The final result exceeded my expectations and will definitely elevate my job and academic applications. Highly recommended for anyone who wants a polished, standout portfolio. Exceptional work!”</p>
+                                                    </div>
+                                                    <div class="review-card__footer">
+                                                        <div class="reviewer-avatar" style="--avatar-grad: linear-gradient(135deg, #4a8ab5, #1e3d52)">AA</div>
+                                                        <div class="reviewer-meta">
+                                                            <div class="reviewer-name">Dr Audai Altaie</div>
+                                                            <div class="reviewer-role">UAE</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Nosherwan Adil -->
+                    <div class="slide" data-category="job-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-job-ready">Job Ready</span>
+                                </div>
+                                <h2 class="slide-title">Nosherwan Adil</h2>
+                                <p class="slide-desc">Academic portfolio of a Physics educator and BISE coordinator, highlighting 10+ years of teaching experience and mentoring.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/nosherwan_adil/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup has-flip" style="border-color:#4a6fb0">
+                                        <div class="mockup-flipper">
+                                            <div class="mockup-front">
+                                                <img src="../assets/nosherwan_adil.png" alt="Nosherwan Adil">
+                                                <div class="mockup-reflection"></div>
+                                                <div class="review-hint-badge">
+                                                    <span class="review-hint-star">★</span>
+                                                    <span>Client Review</span>
+                                                    <svg class="review-hint-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-back">
+                                                <div class="review-card">
+                                                    <svg class="review-card__quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                                                    <div class="review-card__header">
+                                                        <div class="review-card__stars" aria-label="5 out of 5 stars">
+                                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                        </div>
+                                                        <span class="review-card__badge">Verified Review</span>
+                                                    </div>
+                                                    <div class="review-card__body">
+                                                        <p class="review-card__text">“I got a job in Islamabad, Pakistan instantly because of my first impression! My job-ready portfolio helped me a lot throughout the interview process, presenting all my credentials and experience clearly to the hiring panel. Alhamdulillah!”</p>
+                                                    </div>
+                                                    <div class="review-card__footer">
+                                                        <div class="reviewer-avatar" style="--avatar-grad: linear-gradient(135deg, #4a6fb0, #2f4a7a)">NA</div>
+                                                        <div class="reviewer-meta">
+                                                            <div class="reviewer-name">Nosherwan Adil</div>
+                                                            <div class="reviewer-role">Islamabad, Pakistan</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: MCakes -->
+                    <div class="slide" data-category="business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">MCakes</h2>
+                                <p class="slide-desc">An artisan bakery showcasing custom cakes, flavors menu, and ordering with mouth-watering visuals.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/mcakes_dikhan/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup has-flip" style="border-color:#8a4040">
+                                        <div class="mockup-flipper">
+                                            <div class="mockup-front">
+                                                <img src="../assets/mcakes.webp" alt="MCakes">
+                                                <div class="mockup-reflection"></div>
+                                                <div class="review-hint-badge">
+                                                    <span class="review-hint-star">★</span>
+                                                    <span>Client Review</span>
+                                                    <svg class="review-hint-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-back">
+                                                <div class="review-card">
+                                                    <svg class="review-card__quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                                                    <div class="review-card__header">
+                                                        <div class="review-card__stars" aria-label="5 out of 5 stars">
+                                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                        </div>
+                                                        <span class="review-card__badge">Verified Review</span>
+                                                    </div>
+                                                    <div class="review-card__body">
+                                                        <p class="review-card__text">“Great experience working with Nest Portfolios. They created a clean, elegant, and user-friendly website that perfectly reflects my cake business. Highly recommended!”</p>
+                                                    </div>
+                                                    <div class="review-card__footer">
+                                                        <div class="reviewer-avatar" style="--avatar-grad: linear-gradient(135deg, #c05367, #662734)">MC</div>
+                                                        <div class="reviewer-meta">
+                                                            <div class="reviewer-name">MCakes</div>
+                                                            <div class="reviewer-role">Pakistan</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: HCA -->
+                    <div class="slide" data-category="high-paid business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-high-paid">High Paid Clients</span>
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">HCA</h2>
+                                <p class="slide-desc">A bilingual Urdu-English educational platform with course listings, faculty showcase, and admissions.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/HCA-DIKhan/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#3a6650"><img src="../assets/hca.webp" alt="HCA"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Al-Falah Woods -->
+                    <div class="slide" data-category="business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">Al-Falah</h2>
+                                <p class="slide-desc">Premium business website for a firewood and timber supplier with product catalog and certifications.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/al-falah-wood-supplier/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup has-flip" style="border-color:#5a4830">
+                                        <div class="mockup-flipper">
+                                            <div class="mockup-front">
+                                                <img src="../assets/alfalah.webp" alt="Al-Falah Woods">
+                                                <div class="mockup-reflection"></div>
+                                                <div class="review-hint-badge">
+                                                    <span class="review-hint-star">★</span>
+                                                    <span>Client Review</span>
+                                                    <svg class="review-hint-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-back">
+                                                <div class="review-card">
+                                                    <svg class="review-card__quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                                                    <div class="review-card__header">
+                                                        <div class="review-card__stars" aria-label="5 out of 5 stars">
+                                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                        </div>
+                                                        <span class="review-card__badge">Verified Review</span>
+                                                    </div>
+                                                    <div class="review-card__body">
+                                                        <p class="review-card__text">“Mashallah, highly recommended Nest Portfolios for creating a clean and strong website. The Al Falah Wood Supplier website is professionally designed, user-friendly, and perfectly showcases the business in a modern way.”</p>
+                                                    </div>
+                                                    <div class="review-card__footer">
+                                                        <div class="reviewer-avatar" style="--avatar-grad: linear-gradient(135deg, #a4763e, #4b361d)">MI</div>
+                                                        <div class="reviewer-meta">
+                                                            <div class="reviewer-name">Muhammad Ibrahim</div>
+                                                            <div class="reviewer-role">Al Falah Wood Supplier, Pakistan</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Ahmad -->
+                    <div class="slide" data-category="job-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-job-ready">Job Ready</span>
+                                </div>
+                                <h2 class="slide-title">Ahmad</h2>
+                                <p class="slide-desc">Mechanical Engineer portfolio showcasing CAD designs, industrial projects, and engineering expertise.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/ahmad_alam/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#3d4a60"><img src="../assets/ahmadalam.webp" alt="Ahmad Alam"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7: Moazam -->
+                    <div class="slide" data-category="job-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-job-ready">Job Ready</span>
+                                </div>
+                                <h2 class="slide-title">Moazam</h2>
+                                <p class="slide-desc">Welding Inspector portfolio with project documentation, certification gallery, and industrial experience.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/Moazam-Raffique/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup has-flip" style="border-color:#3a3e50">
+                                        <div class="mockup-flipper">
+                                            <div class="mockup-front">
+                                                <img src="../assets/moazam.webp" alt="Moazam Raffique">
+                                                <div class="mockup-reflection"></div>
+                                                <div class="review-hint-badge">
+                                                    <span class="review-hint-star">★</span>
+                                                    <span>Client Review</span>
+                                                    <svg class="review-hint-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-back">
+                                                <div class="review-card">
+                                                    <svg class="review-card__quote-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                                                    <div class="review-card__header">
+                                                        <div class="review-card__stars" aria-label="5 out of 5 stars">
+                                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                        </div>
+                                                        <span class="review-card__badge">Verified Review</span>
+                                                    </div>
+                                                    <div class="review-card__body">
+                                                        <p class="review-card__text">“An impressive showcase of mechanical quality control expertise. This portfolio perfectly balances technical knowledge with practical field application. The focus on compliance and precision in documentation is exactly what the industry demands. Highly recommended”</p>
+                                                    </div>
+                                                    <div class="review-card__footer">
+                                                        <div class="reviewer-avatar" style="--avatar-grad: linear-gradient(135deg, #5b657e, #292d3b)">MR</div>
+                                                        <div class="reviewer-meta">
+                                                            <div class="reviewer-name">Moazm Raffique</div>
+                                                            <div class="reviewer-role">KSA</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8: Wajahat -->
+                    <div class="slide" data-category="job-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-job-ready">Job Ready</span>
+                                </div>
+                                <h2 class="slide-title">Wajahat</h2>
+                                <p class="slide-desc">Chemical Engineer portfolio showcasing research, industrial projects, and professional qualifications.</p>
+                                <a class="slide-link" href="https://nestportfolios.github.io/WajahatUllah/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#305060"><img src="../assets/wajahat.webp" alt="Wajahat Ullah"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 9: TLS Care -->
+                    <div class="slide" data-category="business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">TLS Care</h2>
+                                <p class="slide-desc">A compassionate healthcare and domiciliary care web platform offering bespoke home living support, specialized nursing care, and direct enquiry services.</p>
+                                <a class="slide-link" href="https://www.tlscare.com/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#2a698a"><img src="../assets/tlscare.png" alt="TLS Care"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 10: Glidex Driving School -->
+                    <div class="slide" data-category="business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">Glidex Driving</h2>
+                                <p class="slide-desc">A modern UK driving academy platform featuring structured lesson packages, instructor booking, DVSA-aligned test prep, and learner support.</p>
+                                <a class="slide-link" href="https://www.glidexdrivingschool.co.uk/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#53477e"><img src="../assets/glide_driving_school.png" alt="Glidex Driving School"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 11: Glow Driving School -->
+                    <div class="slide" data-category="business-ready">
+                        <div class="slide-inner">
+                            <div class="slide-text">
+                                <div class="slide-cat-tags">
+                                    <span class="slide-cat-badge badge-business-ready">Business Ready</span>
+                                </div>
+                                <h2 class="slide-title">Glow Driving</h2>
+                                <p class="slide-desc">An engaging driving school web presence highlighting intensive driving courses, pass-guarantee modules, transparent pricing, and fast-track booking.</p>
+                                <a class="slide-link" href="https://glowdrivingschool.co.uk/" target="_blank" rel="noopener noreferrer">
+                                    OPEN CASE STUDY
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                            <div class="slide-visuals">
+                                <div class="mockup-wrap">
+                                    <div class="mockup" style="border-color:#8e4d28"><img src="../assets/glow_driving_school.png" alt="Glow Driving School"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end of slides -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══ MOBILE NAV DRAWER ═══ -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div>
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="../index.html">
+                        <span>Home</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="projects.html" class="active">
+                        <span>Projects</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="pricing.html">
+                        <span>Pricing</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="reviews.html">
+                        <span>Reviews</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <a class="ab-profile-btn ab-profile-btn--primary" href="https://wa.me/923090757010" target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ FLOATING WHATSAPP ═══ -->
+    <div class="floating-wa-container">
+        <a href="https://wa.me/923090757010" class="floating-wa" id="floatingWa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <span class="wa-radar-ring"></span>
+            <span class="wa-radar-ring wa-radar-ring--2"></span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <div class="wa-tooltip" id="waTooltip">
+            <span class="wa-tooltip__status"></span>
+            <span class="wa-tooltip__text">Chat on WhatsApp</span>
+        </div>
+    </div>
+
+    <script src="../js/script.js?v=3.3"></script>
+    <script src="../js/storm.js?v=3.0"></script>
+</body>
+</html>
