@@ -25,7 +25,6 @@
     var frames = new Array(TOTAL_FRAMES);
     var loadedCount = 0;
     var isPlaying = false;
-    var isVisible = true;
     var currentFrame = 0;
     var direction = 1; // 1 = forward, -1 = reverse
     var lastFrameTime = 0;
@@ -103,9 +102,9 @@
 
     // Main animation loop
     function loop(now) {
-        if (!isPlaying || !isVisible) return;
+        if (!isPlaying) return;
 
-        requestAnimationFrame(loop);
+        animId = requestAnimationFrame(loop);
 
         // Smooth mouse parallax lerp
         mouseCurrentX += (mouseTargetX - mouseCurrentX) * 0.08;
@@ -118,6 +117,10 @@
         }
 
         var elapsed = now - lastFrameTime;
+        if (elapsed > 1000) {
+            lastFrameTime = now;
+            elapsed = 0;
+        }
         if (elapsed < FRAME_INTERVAL) {
             renderCurrentFrame();
             return;
@@ -164,13 +167,9 @@
                 poster.style.opacity = '0';
             }
 
-            // Priority 2: Load next initial chunk of frames (1..10)
+            // Priority 2: Load initial batch of frames (1..10) then start continuous loop
             loadChunk(1, 10, function () {
-                // Start animation once initial batch is ready
-                if (!isPlaying) {
-                    isPlaying = true;
-                    requestAnimationFrame(loop);
-                }
+                startLoop();
                 // Priority 3: Stream the remaining frames in the background
                 loadRemaining();
             });
@@ -227,6 +226,24 @@
         loadNext();
     }
 
+    var animId = null;
+
+    function startLoop() {
+        if (!isPlaying) {
+            isPlaying = true;
+            lastFrameTime = performance.now();
+            animId = requestAnimationFrame(loop);
+        }
+    }
+
+    function stopLoop() {
+        isPlaying = false;
+        if (animId) {
+            cancelAnimationFrame(animId);
+            animId = null;
+        }
+    }
+
     // Mouse movement parallax listeners
     if (heroSection) {
         heroSection.addEventListener('mousemove', function (e) {
@@ -243,38 +260,12 @@
         }, { passive: true });
     }
 
-    // Performance: Pause when offscreen using IntersectionObserver
-    if ('IntersectionObserver' in window && heroSection) {
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                isVisible = entry.isIntersecting;
-                if (isVisible && !isPlaying && loadedCount > 4) {
-                    isPlaying = true;
-                    lastFrameTime = performance.now();
-                    requestAnimationFrame(loop);
-                }
-            });
-        }, { threshold: 0.05 });
-
-        observer.observe(heroSection);
-    }
-
-    // Performance: Pause when tab is hidden
+    // Tab visibility handling: pause only when browser tab is hidden to conserve power
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
-            isVisible = false;
+            stopLoop();
         } else {
-            isVisible = true;
-            if (heroSection) {
-                var rect = heroSection.getBoundingClientRect();
-                if (rect.bottom > 0 && rect.top < window.innerHeight) {
-                    if (!isPlaying && loadedCount > 4) {
-                        isPlaying = true;
-                        lastFrameTime = performance.now();
-                        requestAnimationFrame(loop);
-                    }
-                }
-            }
+            startLoop();
         }
     });
 
@@ -282,7 +273,10 @@
     var resizeTimer;
     window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resizeCanvas, 60);
+        resizeTimer = setTimeout(function () {
+            resizeCanvas();
+            startLoop();
+        }, 60);
     }, { passive: true });
 
     // Initialize once DOM is ready
