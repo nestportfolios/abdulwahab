@@ -13,24 +13,56 @@
     <meta property="og:description"
         content="Discover my background, development philosophy, specialized services, and client works.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css?v=5.1">
+    <link rel="stylesheet" href="css/style.css?v=5.4">
     <script src="js/theme.js"></script>
+    <style>
+        /* Instant zero-background for cards & sub-cards on home page */
+        .ab-card,
+        .ab-sol-card,
+        .ab-sol-card--featured,
+        .ab-home-reviews-grid .review-wall-card,
+        .ab-home-reviews-footer,
+        .pricing-faq-item,
+        .ab-card:hover,
+        .ab-sol-card:hover,
+        .ab-sol-card--featured:hover,
+        .ab-home-reviews-grid .review-wall-card:hover,
+        .ab-home-reviews-footer:hover,
+        .pricing-faq-item:hover {
+            background: none !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+    </style>
 </head>
 
 <body class="page-scrollable">
 
-    <!-- ═══ PRELOADER (Connected to Home) ═══ -->
-    <div class="preloader" id="preloader">
-        <div class="preloader__bar" id="preloaderBar"></div>
-        <span class="preloader__counter" id="counter">0</span>
-        <div class="preloader__orbs" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="preloader__particles" id="plParticles" aria-hidden="true"></div>
-        <div class="preloader__stage" id="plStage">
-            <span class="pl-kicker"><i></i> Your first impression</span>
-            <h2 class="pl-headline" id="plHeadline">First impressions are made once, make yours unforgettable.
-            </h2>
-            <div class="pl-line"><span></span></div>
-            <p class="pl-rotor">Be ready for <b id="plRotate"></b><span class="pl-caret"></span></p>
+    <!-- ═══ LUXURY BRAND PRELOADER (Fast & Seamless UX) ═══ -->
+    <div class="preloader" id="preloader" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading Nest Portfolios">
+        <div class="pl-glow" aria-hidden="true"></div>
+        <div class="pl-content">
+            <div class="pl-brand-badge">
+                <div class="pl-badge-ring"></div>
+                <div class="pl-badge-ring pl-badge-ring--pulse"></div>
+                <div class="pl-monogram">NP</div>
+            </div>
+            <div class="pl-brand-meta">
+                <span class="pl-brand-title">NEST <em>PORTFOLIOS</em></span>
+                <span class="pl-brand-subtitle">High-Performance Portfolio Systems</span>
+            </div>
+            <div class="pl-meter-box">
+                <div class="pl-meter-track">
+                    <div class="pl-meter-fill" id="preloaderBar"></div>
+                </div>
+                <div class="pl-meter-labels">
+                    <span class="pl-meter-status" id="plStatus">INITIALIZING</span>
+                    <span class="pl-meter-counter" id="counter">0%</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -202,46 +234,26 @@
                 <!-- 01 What We Do — Specialized Solutions (Interactive Bento Grid) -->
                 <section class="ab-card ab-section-solutions">
                     <div class="ab-section-header">
-                        <div class="ab-kicker">
-                            <span class="ab-kicker__num">01</span>
-                            <span class="ab-kicker__text">Specialized Solutions</span>
-                        </div>
                         <h2 class="ab-section-title">What We Build <em> and </em> Deliver</h2>
-                        <p class="ab-section-subtitle">
-                            Targeted digital solutions engineered to convert visitors, showcase authority, and command
-                            premium results. Click any category to explore live projects:
-                        </p>
                     </div>
 
                     <div class="ab-solutions-grid">
                         <!-- Solution 1: Job Ready Portfolios -->
                         <a class="ab-sol-card" href="pages/projects.html?filter=job-ready"
                             title="Explore Job Ready Portfolios">
-                            <div class="ab-sol-card__top">
-                                <div class="ab-sol-card__icon" aria-hidden="true">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                                    </svg>
-                                </div>
-                                <span class="ab-sol-card__count">5 Works</span>
-                            </div>
                             <div class="ab-sol-card__body">
-                                <span class="ab-sol-card__tag">Career Launch</span>
                                 <h4 class="ab-sol-card__title">Job Ready Portfolios</h4>
                                 <p class="ab-sol-card__desc">
-                                    Strategic personal portfolios structuring your credentials, case studies, and
-                                    recommendations so HR leaders understand your value in seconds.
+                                    A clean personal portfolio that presents your skills, past projects, and achievements so hiring managers immediately see your value.
                                 </p>
                                 <ul class="ab-sol-card__features">
-                                    <li><i class="ab-check">✓</i> ATS-friendly credential layout</li>
-                                    <li><i class="ab-check">✓</i> 1-click recruiter contact flow</li>
-                                    <li><i class="ab-check">✓</i> Verified live project proof</li>
+                                    <li><i class="ab-check">✓</i> Easy-to-read resume &amp; skills layout</li>
+                                    <li><i class="ab-check">✓</i> 1-click WhatsApp &amp; contact links</li>
+                                    <li><i class="ab-check">✓</i> Live links to your real work</li>
                                 </ul>
                             </div>
                             <div class="ab-sol-card__footer">
-                                <span>Explore 5 Projects</span>
+                                <span>Explore more</span>
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -253,35 +265,19 @@
                         <!-- Solution 2: Business Ready Websites -->
                         <a class="ab-sol-card ab-sol-card--featured" href="pages/projects.html?filter=business-ready"
                             title="Explore Business Ready Websites">
-                            <div class="ab-sol-card__top">
-                                <div class="ab-sol-card__icon" aria-hidden="true">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path
-                                            d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                                        <path
-                                            d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-                                    </svg>
-                                </div>
-                                <span class="ab-sol-card__count">6 Works</span>
-                            </div>
                             <div class="ab-sol-card__body">
-                                <span class="ab-sol-card__tag">Revenue &amp; Growth</span>
                                 <h4 class="ab-sol-card__title">Business Ready Websites</h4>
                                 <p class="ab-sol-card__desc">
-                                    Modern platforms presenting business offerings with verified reviews, clear service
-                                    cards, and seamless customer booking funnels.
+                                    A modern website for your business with clear service details, customer reviews, and an easy way for clients to reach out.
                                 </p>
                                 <ul class="ab-sol-card__features">
-                                    <li><i class="ab-check">✓</i> High-converting landing architecture</li>
-                                    <li><i class="ab-check">✓</i> Direct WhatsApp &amp; booking funnels</li>
-                                    <li><i class="ab-check">✓</i> Integrated social proof &amp; reviews</li>
+                                    <li><i class="ab-check">✓</i> Clean layout designed to get clients</li>
+                                    <li><i class="ab-check">✓</i> Direct WhatsApp chat &amp; inquiry forms</li>
+                                    <li><i class="ab-check">✓</i> Verified customer reviews &amp; proof</li>
                                 </ul>
                             </div>
                             <div class="ab-sol-card__footer">
-                                <span>Explore 6 Websites</span>
+                                <span>Explore more</span>
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -293,31 +289,19 @@
                         <!-- Solution 3: High-Paid Client Portfolios -->
                         <a class="ab-sol-card" href="pages/projects.html?filter=high-paid"
                             title="Explore High-Paid Clients Ready Portfolios">
-                            <div class="ab-sol-card__top">
-                                <div class="ab-sol-card__icon" aria-hidden="true">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polygon
-                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                    </svg>
-                                </div>
-                                <span class="ab-sol-card__count">Top Tier</span>
-                            </div>
                             <div class="ab-sol-card__body">
-                                <span class="ab-sol-card__tag">Executive Caliber</span>
-                                <h4 class="ab-sol-card__title">High Paid Clients Ready Portfolios</h4>
+                                <h4 class="ab-sol-card__title">High Paid Ready Portfolios</h4>
                                 <p class="ab-sol-card__desc">
-                                    Bespoke portfolio systems crafted to project international authority, justify
-                                    5-figure contract rates, and forge an unforgettable first impression.
+                                    High-end websites with custom animations and interactive features designed for top professionals and brands to command premium rates.
                                 </p>
                                 <ul class="ab-sol-card__features">
-                                    <li><i class="ab-check">✓</i> Custom UI/UX &amp; 60fps micro-motion</li>
-                                    <li><i class="ab-check">✓</i> Elite positioning for top dollar</li>
-                                    <li><i class="ab-check">✓</i> Built to close high-ticket clients</li>
+                                    <li><i class="ab-check">✓</i> Smooth micro-animations &amp; custom design</li>
+                                    <li><i class="ab-check">✓</i> Premium look that builds instant trust</li>
+                                    <li><i class="ab-check">✓</i> Built to attract high-paying clients</li>
                                 </ul>
                             </div>
                             <div class="ab-sol-card__footer">
-                                <span>Explore Premium Works</span>
+                                <span>Explore more</span>
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -328,124 +312,16 @@
                     </div>
                 </section>
 
-                <!-- 02 Technical Stack (Bento Matrix) -->
-                <section class="ab-card ab-section-tech">
-                    <div class="ab-section-header">
-                        <div class="ab-kicker">
-                            <span class="ab-kicker__num">02</span>
-                            <span class="ab-kicker__text">Technical Arsenal</span>
-                        </div>
-                        <h2 class="ab-section-title">Skills <em> and </em> Technologies</h2>
-                        <p class="ab-section-subtitle">
-                            Modern, production-grade technologies, styling systems, and design tools utilized to craft
-                            fluid web applications:
-                        </p>
-                    </div>
-
-                    <div class="ab-tech-bento">
-                        <!-- Group 1: Core Languages -->
-                        <div class="ab-tech-card">
-                            <div class="ab-tech-card__header">
-                                <div class="ab-tech-card__icon-dot" aria-hidden="true"></div>
-                                <h4>Core Languages &amp; Standards</h4>
-                            </div>
-                            <div class="ab-tech-tags">
-                                <div class="ab-tech-chip"><strong>HTML5</strong><small>Semantic Markup</small></div>
-                                <div class="ab-tech-chip"><strong>CSS3</strong><small>Modern Custom Layouts</small>
-                                </div>
-                                <div class="ab-tech-chip"><strong>JavaScript</strong><small>ES6+ &bull; DOM &bull;
-                                        Audio</small></div>
-                                <div class="ab-tech-chip"><strong>Python</strong><small>Automation &bull;
-                                        Scripting</small></div>
-                            </div>
-                        </div>
-
-                        <!-- Group 2: Frameworks & Styling -->
-                        <div class="ab-tech-card">
-                            <div class="ab-tech-card__header">
-                                <div class="ab-tech-card__icon-dot" aria-hidden="true"></div>
-                                <h4>Frameworks and Styling</h4>
-                            </div>
-                            <div class="ab-tech-tags">
-                                <div class="ab-tech-chip"><strong>React.js</strong><small>Modular Architecture</small>
-                                </div>
-                                <div class="ab-tech-chip"><strong>Tailwind CSS</strong><small>Utility-First
-                                        Design</small></div>
-                                <div class="ab-tech-chip"><strong>Bootstrap 5</strong><small>Grid &bull;
-                                        Components</small></div>
-                                <div class="ab-tech-chip"><strong>HTML5 Canvas</strong><small>Interactive FX &bull;
-                                        Storm</small></div>
-                            </div>
-                        </div>
-
-                        <!-- Group 3: Design & Workflow -->
-                        <div class="ab-tech-card">
-                            <div class="ab-tech-card__header">
-                                <div class="ab-tech-card__icon-dot" aria-hidden="true"></div>
-                                <h4>Design, Tools and Workflow</h4>
-                            </div>
-                            <div class="ab-tech-tags">
-                                <!-- <div class="ab-tech-chip"><strong>Figma</strong><small>UI/UX Prototyping</small></div> -->
-                                <div class="ab-tech-chip"><strong>Git &amp; GitHub</strong><small>Version
-                                        Control</small></div>
-                                <div class="ab-tech-chip"><strong>VS Code</strong><small>Rapid Dev Pipeline</small>
-                                </div>
-                                <div class="ab-tech-chip"><strong>GitHub Pages</strong><small>Global Edge
-                                        Hosting</small></div>
-                            </div>
-                        </div>
-
-                        <!-- Group 4: Engineering Standards -->
-                        <div class="ab-tech-card ab-tech-card--metrics">
-                            <div class="ab-tech-card__header">
-                                <div class="ab-tech-card__icon-dot" aria-hidden="true"></div>
-                                <h4>Engineering Standards</h4>
-                            </div>
-                            <div class="ab-metrics-grid">
-                                <div class="ab-metric-pill">
-                                    <span class="ab-metric-num">100%</span>
-                                    <span class="ab-metric-label">Mobile &bull; Tablet Fluid</span>
-                                </div>
-                                <div class="ab-metric-pill">
-                                    <span class="ab-metric-num">&lt; 1.2s</span>
-                                    <span class="ab-metric-label">Rapid Load Time</span>
-                                </div>
-                                <div class="ab-metric-pill">
-                                    <span class="ab-metric-num">60 FPS</span>
-                                    <span class="ab-metric-label">Fluid Micro-Motion</span>
-                                </div>
-                                <div class="ab-metric-pill">
-                                    <span class="ab-metric-num">A11y &amp; SEO</span>
-                                    <span class="ab-metric-label">Industry Standards</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 03 Client Reviews (Home Showcase) -->
+                <!-- Client Reviews (Home Showcase) -->
                 <section class="ab-card ab-section-reviews">
                     <div class="ab-section-header">
-                        <div class="ab-kicker">
-                            <span class="ab-kicker__num">03</span>
-                            <span class="ab-kicker__text">Client Testimonials</span>
-                        </div>
                         <div class="ab-reviews-head-row">
                             <div>
                                 <h2 class="ab-section-title">Verified <em>5.0★</em> Client Reviews</h2>
                                 <p class="ab-section-subtitle">
-                                    Real testimonials from medical professionals, educators, and business owners who
-                                    elevated their presence with Nest Portfolios:
+                                    Real feedback from doctors, educators, and business owners who worked with Nest Portfolios:
                                 </p>
                             </div>
-                            <a href="pages/reviews.html" class="ab-reviews-cta-pill" title="View all verified testimonials">
-                                <span>All Reviews (6)</span>
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
                         </div>
                     </div>
 
@@ -471,13 +347,8 @@
                                 </p>
                             </div>
                             <div class="review-wall-card__author">
-                                <div class="review-wall-card__avatar"
-                                    style="background: linear-gradient(135deg, #4a8ab5, #1e3d52)">AA</div>
                                 <div class="review-wall-card__info">
                                     <span class="review-wall-card__name">Dr. Audai Al-Taie</span>
-                                    <span class="review-wall-card__role">Medical Professional &bull; UAE</span>
-                                    <span class="review-wall-card__project">Project: Medical Portfolio
-                                        (draudaialtaie.com)</span>
                                 </div>
                             </div>
                         </div>
@@ -501,12 +372,8 @@
                                 </p>
                             </div>
                             <div class="review-wall-card__author">
-                                <div class="review-wall-card__avatar"
-                                    style="background: linear-gradient(135deg, #4a6fb0, #2f4a7a)">NA</div>
                                 <div class="review-wall-card__info">
                                     <span class="review-wall-card__name">Nosherwan Adil</span>
-                                    <span class="review-wall-card__role">Physics Educator &bull; Islamabad</span>
-                                    <span class="review-wall-card__project">Project: Academic Job-Ready Portfolio</span>
                                 </div>
                             </div>
                         </div>
@@ -530,12 +397,8 @@
                                 </p>
                             </div>
                             <div class="review-wall-card__author">
-                                <div class="review-wall-card__avatar"
-                                    style="background: linear-gradient(135deg, #a4763e, #4b361d)">MI</div>
                                 <div class="review-wall-card__info">
                                     <span class="review-wall-card__name">Muhammad Ibrahim</span>
-                                    <span class="review-wall-card__role">Owner, Al Falah Wood Supplier</span>
-                                    <span class="review-wall-card__project">Project: Corporate Supplier Platform</span>
                                 </div>
                             </div>
                         </div>
@@ -543,10 +406,35 @@
 
                     <!-- Bottom View All Link Bar -->
                     <div class="ab-home-reviews-footer">
-                        <span>Read all 6 detailed client case studies &amp; verified reviews</span>
                         <a href="pages/reviews.html" class="ab-home-reviews-link">
                             Explore All Reviews <i>&rarr;</i>
                         </a>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section class="ab-card ab-section-faq">
+                    <div class="ab-section-header">
+                        <h3 class="ab-label"><span>FAQ</span> Frequently Asked Questions</h3>
+                    </div>
+
+                    <div class="pricing-faq-grid">
+                        <div class="pricing-faq-item">
+                            <h4>How do we get started?</h4>
+                            <p>Send me a message on WhatsApp with what you need. We'll have a quick chat to choose the best package for you and start working right away.</p>
+                        </div>
+                        <div class="pricing-faq-item">
+                            <h4>What payment methods do you accept?</h4>
+                            <p>You can pay securely using Bank Transfer, Wise, Payoneer, or via Upwork and Fiverr if you prefer.</p>
+                        </div>
+                        <div class="pricing-faq-item">
+                            <h4>Can you customize a package for me?</h4>
+                            <p>Yes! Every project is different. If you need something special or want to mix different features, I will create a custom plan that fits your exact needs and budget.</p>
+                        </div>
+                        <div class="pricing-faq-item">
+                            <h4>Do you help with domain and hosting?</h4>
+                            <p>Yes, absolutely. I will help you connect your custom domain name (.com) and set up free hosting on Vercel, Netlify, or GitHub Pages at no extra cost.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -563,10 +451,6 @@
                         <a class="ab-footer-logo" href="index.html">
                             <span class="ab-footer-logo__text">Nest Portfolios</span>
                         </a>
-                        <p class="ab-footer-tagline">
-                            Bespoke digital portfolios &amp; high-performance web experiences engineered to turn first
-                            impressions into lasting authority.
-                        </p>
                         <div class="ab-footer-badge">
                             <i class="ab-pulse"></i>
                             <span>Available for new client projects</span>
@@ -591,7 +475,6 @@
                             <li><a href="pages/projects.html?filter=job-ready">Job Ready Portfolios</a></li>
                             <li><a href="pages/projects.html?filter=business-ready">Business Ready Websites</a></li>
                             <li><a href="pages/projects.html?filter=high-paid">High-Paid Client Tiers</a></li>
-                            <li><a href="pages/pricing.html">Custom UI/UX Audits</a></li>
                         </ul>
                     </div>
 
@@ -599,8 +482,7 @@
                     <div class="ab-footer-col">
                         <h4 class="ab-footer-title">Direct Connect</h4>
                         <p class="ab-footer-contact-info">
-                            Ready to build your standout web platform? Connect directly on WhatsApp for instant
-                            consultation.
+                            Ready to build your new website? Message me directly on WhatsApp for a quick chat.
                         </p>
                         <a class="ab-footer-cta-btn" href="https://wa.me/923090757010" target="_blank"
                             rel="noopener noreferrer">
@@ -617,8 +499,7 @@
                 <!-- Bottom Bar / Legal & Back to Top -->
                 <div class="ab-footer-bottom">
                     <p class="ab-footer-copyright">
-                        &copy; 2026 Nest Portfolios. All rights reserved. Built with pure performance, procedural
-                        acoustics &amp; modern web standards.
+                        &copy; 2026 Nest Portfolios. All rights reserved. Fast, modern &amp; responsive web development.
                     </p>
                     <div class="ab-footer-bottom-actions">
                         <button type="button" class="ab-footer-backtop" id="backToTopBtn"
@@ -656,102 +537,62 @@
     <!-- ═══ PRELOADER & HAMBURGER SCRIPT ═══ -->
     <script>
         (function () {
-            /* 1. Preloader Logic */
+            /* 1. Brand Preloader Logic (Fast & Responsive UX) */
             var preloader = document.getElementById('preloader');
             var preloaderBar = document.getElementById('preloaderBar');
             var counter = document.getElementById('counter');
-            var headline = document.getElementById('plHeadline');
-            var stage = document.getElementById('plStage');
-            var rotate = document.getElementById('plRotate');
-            var pWrap = document.getElementById('plParticles');
+            var plStatus = document.getElementById('plStatus');
 
             if (preloader) {
-                // Word splitting for animated entrance
-                if (headline) {
-                    var idx = 0;
-                    Array.from(headline.childNodes).forEach(function (child) {
-                        if (child.nodeType === 3) {
-                            var frag = document.createDocumentFragment();
-                            child.textContent.split(/(\s+)/).forEach(function (part) {
-                                if (!part) return;
-                                if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-                                var s = document.createElement('span');
-                                s.className = 'w';
-                                s.style.setProperty('--i', idx++);
-                                s.textContent = part;
-                                frag.appendChild(s);
-                            });
-                            headline.replaceChild(frag, child);
-                        }
-                    });
-                }
+                var startTime = performance.now();
+                var DURATION = 650; // fast 650ms total
+                var completed = false;
 
-                // Rising golden particles
-                if (pWrap) {
-                    for (var i = 0; i < 28; i++) {
-                        var p = document.createElement('span');
-                        p.className = 'pl-particle';
-                        p.style.left = (Math.random() * 100) + '%';
-                        p.style.setProperty('--s', (2 + Math.random() * 5).toFixed(1) + 'px');
-                        p.style.setProperty('--d', (4 + Math.random() * 5).toFixed(1) + 's');
-                        p.style.setProperty('--delay', (-Math.random() * 8).toFixed(1) + 's');
-                        p.style.setProperty('--x', ((Math.random() - 0.5) * 120).toFixed(0) + 'px');
-                        pWrap.appendChild(p);
+                function updateProgress(now) {
+                    if (completed) return;
+                    var elapsed = now - startTime;
+                    var progress = Math.min(elapsed / DURATION, 1);
+                    var val = Math.floor((1 - Math.pow(1 - progress, 3)) * 100);
+
+                    if (counter) counter.textContent = val + '%';
+                    if (preloaderBar) preloaderBar.style.width = val + '%';
+                    preloader.setAttribute('aria-valuenow', val);
+
+                    if (val >= 60 && plStatus && plStatus.textContent === 'INITIALIZING') {
+                        plStatus.textContent = 'READY';
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateProgress);
+                    } else {
+                        finishPreloader();
                     }
                 }
 
-                // Rotor words
-                if (rotate) {
-                    var phrases = ['your dream job', 'growing your business', 'winning high-paid clients'];
-                    var pi = 0, ci = 0, deleting = false;
-                    function typeLoop() {
-                        var word = phrases[pi];
-                        ci += deleting ? -1 : 1;
-                        rotate.textContent = word.slice(0, ci);
-                        var delay = deleting ? 35 : 75;
-                        if (!deleting && ci === word.length) { deleting = true; delay = 1100; }
-                        else if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; delay = 300; }
-                        setTimeout(typeLoop, delay);
-                    }
-                    setTimeout(typeLoop, 1800);
-                }
+                function finishPreloader() {
+                    if (completed) return;
+                    completed = true;
+                    if (counter) counter.textContent = '100%';
+                    if (preloaderBar) preloaderBar.style.width = '100%';
+                    if (plStatus) plStatus.textContent = 'READY';
 
-                // Parallax on mouse
-                if (stage) {
-                    preloader.addEventListener('mousemove', function (e) {
-                        var x = (e.clientX / window.innerWidth - 0.5) * 16;
-                        var y = (e.clientY / window.innerHeight - 0.5) * 12;
-                        stage.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-                    });
-                }
-
-                // Ticking loader counter
-                var t0 = Date.now();
-                var LOAD_MS = 4800;
-                function tickLoader() {
-                    var elapsed = Date.now() - t0;
-                    var t = Math.min(elapsed / LOAD_MS, 1);
-                    var val = Math.floor((1 - Math.pow(1 - t, 3)) * 100);
-                    if (counter) counter.textContent = val;
-                    if (preloaderBar) preloaderBar.style.height = val + '%';
-                    if (t < 1) requestAnimationFrame(tickLoader);
-                }
-                requestAnimationFrame(tickLoader);
-
-                function dismiss() {
-                    var elapsed = Date.now() - t0;
-                    var wait = Math.max(LOAD_MS - elapsed, 0);
                     setTimeout(function () {
-                        if (counter) counter.textContent = '100';
-                        if (preloaderBar) preloaderBar.style.height = '100%';
+                        preloader.classList.add('done');
                         setTimeout(function () {
-                            preloader.classList.add('done');
-                        }, 350);
-                    }, wait);
+                            preloader.style.display = 'none';
+                        }, 450);
+                    }, 120);
                 }
 
-                if (document.readyState === 'complete') dismiss();
-                else window.addEventListener('load', dismiss);
+                requestAnimationFrame(updateProgress);
+
+                if (document.readyState === 'complete') {
+                    setTimeout(finishPreloader, 450);
+                } else {
+                    window.addEventListener('load', function () {
+                        setTimeout(finishPreloader, 350);
+                    });
+                }
             }
 
             /* 2. Hamburger Drawer Logic */
