@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" class="page-scrollable">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <title>Pricing — Nest Portfolios | Web Developer & UI/UX Specialist</title>
+    <meta name="description"
+        content="Transparent pricing packages for web development, custom portfolio design, and business websites by Nest Portfolios. Hourly rate and fixed project rates available.">
+    <meta name="author" content="Nest Portfolios">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pricing Packages — Nest Portfolios | Web Developer">
+    <meta property="og:description"
+        content="Hourly and fixed project rates for bespoke portfolios and high-performance websites.">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css?v=5.6">
+    <script src="../js/theme.js"></script>
+    <style>
+        /* Instant zero-background for cards on pricing page */
+        .pricing-card,
+        .pricing-card--popular,
+        .pricing-retainer-banner,
+        .pricing-faq-item,
+        .pricing-card:hover,
+        .pricing-card--popular:hover,
+        .pricing-retainer-banner:hover,
+        .pricing-faq-item:hover {
+            background: none !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body class="page-scrollable">
+
+    <!-- ═══ STICKY TOPBAR ═══ -->
+    <header class="topbar topbar--sticky">
+        <div class="topbar__inner">
+            <a class="topbar__name" href="../index.html" id="logoBtn">Nest Portfolios</a>
+
+            <div class="topbar__right">
+                <a class="topbar__link desktop-only" href="../index.html">
+                    Home
+                </a>
+                <a class="topbar__link desktop-only" href="projects.html">
+                    Projects
+                </a>
+                <a class="topbar__link desktop-only active" href="pricing.html">
+                    Pricing
+                </a>
+                <a class="topbar__link desktop-only" href="reviews.html">
+                    Reviews
+                </a>
+                <button class="sound-toggle" id="soundToggle" type="button" role="switch" aria-checked="true"
+                    aria-label="Mute electric sound FX" title="Electric Sound FX: Active (Click to mute)">
+                    <svg class="sound-icon sound-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <svg class="sound-icon sound-icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false"
+                    aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <span class="theme-toggle__thumb" aria-hidden="true">
+                        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4" />
+                            <path
+                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                        </svg>
+                        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </span>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ MOBILE NAV DRAWER ═══ -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div>
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="../index.html">
+                        <span>Home</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="projects.html">
+                        <span>Projects</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="pricing.html" class="active">
+                        <span>Pricing</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="reviews.html">
+                        <span>Reviews</span>
+                        <i>&rarr;</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile-nav-footer">
+            <a class="ab-profile-btn ab-profile-btn--primary" href="https://wa.me/923090757010" target="_blank"
+                rel="noopener noreferrer">
+                Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ PRICING PAGE CONTENT ═══ -->
+    <main class="about-page-wrap">
+
+        <!-- ─ Hero Header ─ -->
+        <section class="about-page-hero">
+            <div class="about-page-hero__badge">
+                <span class="ab-eyebrow"><i class="ab-pulse"></i> Simple &amp; Clear Pricing</span>
+            </div>
+            <h1 class="about-page-hero__title">
+                Affordable, transparent pricing for <em>your website</em>.
+            </h1>
+            <p class="about-page-hero__subtitle">
+                No hidden fees and no middlemen. Choose a fixed package for a new website, or hire me by the hour for quick updates and fixes.
+            </p>
+        </section>
+
+        <!-- ─ Pricing Packages ─ -->
+        <div class="pricing-container">
+
+            <!-- ─ Logical 4-Tier Packages Grid ─ -->
+            <div class="pricing-grid">
+
+                <!-- Package 1: Personal Ready Portfolio -->
+                <div class="pricing-card">
+                    <div class="pricing-card__info">
+                        <div class="pricing-card__head">
+                            <h2 class="pricing-card__title">Personal Ready Portfolio</h2>
+                            <span class="pricing-card__turnaround">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                2–3 Days Turnaround
+                            </span>
+                            <p class="pricing-card__subtitle">
+                                Built for doctors, creators, educators, and consultants to build digital authority and showcase their life's work.
+                            </p>
+                        </div>
+
+                        <div class="pricing-card__price-box">
+                            <span class="pricing-card__starts">Start from</span>
+                            <span class="pricing-card__amount">$25</span>
+                            <span class="pricing-card__period">USD &bull; one-time payment</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card__features-wrap">
+                        <ul class="pricing-card__features">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Personal Branding &amp; Narrative Story</strong>
+                                    <span>Compelling autobiography, credentials, and personal philosophy tailored to your audience.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Credentials &amp; Publications Gallery</strong>
+                                    <span>Organized archive of research papers, certifications, speaking milestones, and media appearances.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>1-Click WhatsApp &amp; Booking Funnel</strong>
+                                    <span>Direct inquiry buttons to schedule appointments, consultations, or collaborative speaking sessions.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Client Endorsements &amp; Reviews Wall</strong>
+                                    <span>Verified testimonials and patient/client feedback presented with authentic credibility.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Shareable Custom Link &amp; PDF Export</strong>
+                                    <span>Responsive shareable URL plus PDF version for fast attachment to proposals and profiles.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Free Fast Hosting &amp; 14-Day Edits</strong>
+                                    <span>Zero hosting cost setup on Vercel/GitHub Pages plus 14 days of free revisions.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card__cta">
+                        <a class="ab-profile-btn ab-profile-btn--secondary"
+                            href="https://wa.me/923090757010?text=Hi%20Nest%20Portfolios,%20I'm%20interested%20in%20the%20Personal%20Ready%20Portfolio%20Package%20(Start%20from%20$25)."
+                            target="_blank" rel="noopener noreferrer">
+                            <span>Start Your Portfolio ($25)</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2: Job-Ready Portfolio -->
+                <div class="pricing-card">
+                    <div class="pricing-card__info">
+                        <div class="pricing-card__head">
+                            <h2 class="pricing-card__title">Job-Ready Portfolio</h2>
+                            <span class="pricing-card__turnaround">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                2–3 Days Turnaround
+                            </span>
+                            <p class="pricing-card__subtitle">
+                                Built for job seekers, developers, and designers to showcase projects, pass recruiter screenings, and get hired.
+                            </p>
+                        </div>
+
+                        <div class="pricing-card__price-box">
+                            <span class="pricing-card__starts">Start from</span>
+                            <span class="pricing-card__amount">$30</span>
+                            <span class="pricing-card__period">USD &bull; one-time payment</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card__features-wrap">
+                        <ul class="pricing-card__features">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Recruiter-Focused Resume &amp; Timeline</strong>
+                                    <span>Work history, education, and credentials formatted for fast HR screening.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Live Project Demos &amp; GitHub Links</strong>
+                                    <span>Clickable live preview buttons, GitHub repositories, and tech stack tags.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>1-Click PDF Resume Download</strong>
+                                    <span>Prominent hero button allowing hiring managers to download your CV instantly.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Skills Matrix &amp; Tech Badges</strong>
+                                    <span>Clean visual badges for programming languages, frameworks, and developer tools.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Direct Recruiter WhatsApp &amp; Email</strong>
+                                    <span>Quick-connect links for WhatsApp, LinkedIn, and email to speed up interview calls.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Free Fast Hosting &amp; 14-Day Edits</strong>
+                                    <span>Zero hosting cost setup on Vercel/GitHub Pages plus 14 days of free revisions.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card__cta">
+                        <a class="ab-profile-btn ab-profile-btn--secondary"
+                            href="https://wa.me/923090757010?text=Hi%20Nest%20Portfolios,%20I'm%20interested%20in%20the%20Job-Ready%20Portfolio%20Package%20(Start%20from%20$30)."
+                            target="_blank" rel="noopener noreferrer">
+                            <span>Start Your Portfolio ($30)</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2: Business ready websites -->
+                <div class="pricing-card pricing-card--popular">
+                    <span class="pricing-card__badge">Most Popular</span>
+                    <div class="pricing-card__info">
+                        <div class="pricing-card__head">
+                            <h2 class="pricing-card__title">Business ready websites</h2>
+                            <span class="pricing-card__turnaround">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                3–5 Days Turnaround
+                            </span>
+                            <p class="pricing-card__subtitle">
+                                Complete commercial website built to establish business credibility, showcase services, and capture client inquiries.
+                            </p>
+                        </div>
+
+                        <div class="pricing-card__price-box">
+                            <span class="pricing-card__starts">Start from</span>
+                            <span class="pricing-card__amount">$60</span>
+                            <span class="pricing-card__period">USD &bull; one-time payment</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card__features-wrap">
+                        <ul class="pricing-card__features">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Commercial Multi-Section Layout</strong>
+                                    <span>High-converting homepage with Hero, About, Services, Pricing, FAQ, and Contact.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Direct WhatsApp &amp; Lead Capture Forms</strong>
+                                    <span>Floating WhatsApp chat button and inquiry forms that send customer leads directly to your phone.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Services &amp; Pricing Showcase</strong>
+                                    <span>Structured service cards, package comparisons, and clear pricing to pre-qualify customers.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Customer Reviews &amp; Social Proof</strong>
+                                    <span>Testimonial carousels, 5-star ratings, and trust badges that convert visitors into buyers.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Google Search (SEO) &amp; Maps Integration</strong>
+                                    <span>On-page SEO meta tags and optional Google Maps embed to help local customers find you.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Custom Domain (.com) &amp; 30-Day Support</strong>
+                                    <span>Setup on your custom domain with free SSL padlock security plus 30 days of business support.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card__cta">
+                        <a class="ab-profile-btn ab-profile-btn--primary"
+                            href="https://wa.me/923090757010?text=Hi%20Nest%20Portfolios,%20I'm%20interested%20in%20the%20Business%20ready%20websites%20Package%20(Start%20from%20$60)."
+                            target="_blank" rel="noopener noreferrer">
+                            <span>Build Business Website ($60)</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3: High-Paid Ready Portfolio -->
+                <div class="pricing-card">
+                    <div class="pricing-card__info">
+                        <div class="pricing-card__head">
+                            <h2 class="pricing-card__title">High-Paid Ready Portfolio</h2>
+                            <span class="pricing-card__turnaround">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                5–7 Days Turnaround
+                            </span>
+                            <p class="pricing-card__subtitle">
+                                Bespoke digital flagship for senior specialists and consultants to command top-tier rates and close $5k–$10k+ clients.
+                            </p>
+                        </div>
+
+                        <div class="pricing-card__price-box">
+                            <span class="pricing-card__starts">Start from</span>
+                            <span class="pricing-card__amount">$110</span>
+                            <span class="pricing-card__period">USD &bull; full custom build</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card__features-wrap">
+                        <ul class="pricing-card__features">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Luxury Custom UI &amp; Editorial Layout</strong>
+                                    <span>High-end visual aesthetic, micro-animations, dark/light themes, and authoritative typography.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>In-Depth Case Studies &amp; ROI Impact Proof</strong>
+                                    <span>Detailed project breakdowns highlighting client business problems, technical architecture, and revenue ROI.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>High-Ticket Client Booking Funnel</strong>
+                                    <span>Embedded appointment scheduling (Calendly/Cal.com) and client qualification inquiry flow.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Interactive Demos &amp; Modern Stack</strong>
+                                    <span>Live component sandboxes, dynamic UI modules, and video walkthrough embeds.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>Full Code Ownership &amp; GitHub Transfer</strong>
+                                    <span>Clean, modular codebase delivered to your private GitHub repository with 100% full commercial rights.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <div class="pricing-feature-text">
+                                    <strong>60 Days Priority VIP Support &amp; Strategy</strong>
+                                    <span>Direct WhatsApp priority line, rapid turnaround on tweaks, and 1-on-1 strategic portfolio consulting.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card__cta">
+                        <a class="ab-profile-btn ab-profile-btn--secondary"
+                            href="https://wa.me/923090757010?text=Hi%20Nest%20Portfolios,%20I'm%20interested%20in%20the%20High-Paid%20Ready%20Portfolio%20Package%20(Start%20from%20$110)."
+                            target="_blank" rel="noopener noreferrer">
+                            <span>Start Custom Portfolio ($110)</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ─ Retainer / Quick Tasks Banner ─ -->
+            <div class="pricing-retainer-banner">
+                <div class="pricing-retainer-banner__info">
+                    <span class="pricing-retainer-banner__tag">Hourly Help &amp; Quick Tasks</span>
+                    <h3 class="pricing-retainer-banner__title">Need quick updates, bug fixes, or ongoing help?</h3>
+                    <p class="pricing-retainer-banner__desc">
+                        Hire me by the hour for your existing website. Great for adding new sections, fixing bugs, improving design, or making regular updates. You only pay for the time worked.
+                    </p>
+                </div>
+                <div class="pricing-retainer-banner__action">
+                    <div class="pricing-retainer-banner__rate">
+                        $10 <small>/ hour (USD)</small>
+                    </div>
+                    <a class="ab-profile-btn ab-profile-btn--primary"
+                        href="https://wa.me/923090757010?text=Hi%20Nest%20Portfolios,%20I%20would%20like%20to%20hire%20you%20by%20the%20hour%20($10/hr)."
+                        target="_blank" rel="noopener noreferrer">
+                        <span>Hire by the Hour ($10/hr)</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ─ FAQ Section ─ -->
+            <section class="pricing-faq-section">
+                <h3 class="ab-label"><span>FAQ</span> Frequently Asked Questions</h3>
+                <div class="pricing-faq-grid">
+                    <div class="pricing-faq-item">
+                        <h4>How do we get started?</h4>
+                        <p>Send me a message on WhatsApp with what you need. We'll have a quick chat to choose the best package for you and start working right away.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h4>What payment methods do you accept?</h4>
+                        <p>You can pay securely using Bank Transfer, Wise, Payoneer, or via Upwork and Fiverr if you prefer.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h4>Can you customize a package for me?</h4>
+                        <p>Yes! Every project is different. If you need something special or want to mix different features, I will create a custom plan that fits your exact needs and budget.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h4>Do you help with domain and hosting?</h4>
+                        <p>Yes, absolutely. I will help you connect your custom domain name (.com) and set up free hosting on Vercel, Netlify, or GitHub Pages at no extra cost.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ═══ AESTHETIC MASTER FOOTER ═══ -->
+        <footer class="ab-site-footer">
+            <div class="ab-footer-inner">
+                <!-- Top / Main 4-Column Grid -->
+                <div class="ab-footer-grid">
+                    <!-- Column 1: Brand & Identity -->
+                    <div class="ab-footer-col ab-footer-col--brand">
+                        <a class="ab-footer-logo" href="../index.html">
+                            <span class="ab-footer-logo__text">Nest Portfolios</span>
+                        </a>
+                        <div class="ab-footer-badge">
+                            <i class="ab-pulse"></i>
+                            <span>Available for new client projects</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Navigation -->
+                    <div class="ab-footer-col">
+                        <h4 class="ab-footer-title">Navigation</h4>
+                        <ul class="ab-footer-nav">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="projects.html">Featured Projects</a></li>
+                            <li><a href="pricing.html" class="active">Pricing &amp; Packages</a></li>
+                            <li><a href="reviews.html">Client Reviews (5.0★)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Specialized Solutions -->
+                    <div class="ab-footer-col">
+                        <h4 class="ab-footer-title">Solutions</h4>
+                        <ul class="ab-footer-nav">
+                            <li><a href="projects.html?filter=personal">Personal Ready Portfolios</a></li>
+                            <li><a href="projects.html?filter=job-ready">Job Ready Portfolios</a></li>
+                            <li><a href="projects.html?filter=business-ready">Business Ready Websites</a></li>
+                            <li><a href="projects.html?filter=high-paid">High-Paid Client Ready Portfolios</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Direct Inquiries & Contact -->
+                    <div class="ab-footer-col">
+                        <h4 class="ab-footer-title">Direct Connect</h4>
+                        <p class="ab-footer-contact-info">
+                            Ready to build your new website? Message me directly on WhatsApp for a quick chat.
+                        </p>
+                        <a class="ab-footer-cta-btn" href="https://wa.me/923090757010" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                        <span class="ab-footer-location">Pakistan &bull; Serving Clients Worldwide</span>
+                    </div>
+                </div>
+
+                <!-- Bottom Bar / Legal & Back to Top -->
+                <div class="ab-footer-bottom">
+                    <p class="ab-footer-copyright">
+                        &copy; 2026 Nest Portfolios. All rights reserved. Fast, modern &amp; responsive web development.
+                    </p>
+                    <div class="ab-footer-bottom-actions">
+                        <button type="button" class="ab-footer-backtop" id="backToTopBtn"
+                            onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+                            <span>Back to top</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ═══ FLOATING WHATSAPP ═══ -->
+    <div class="floating-wa-container">
+        <a href="https://wa.me/923090757010" class="floating-wa" id="floatingWa" target="_blank"
+            rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <span class="wa-radar-ring"></span>
+            <span class="wa-radar-ring wa-radar-ring--2"></span>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+        </a>
+        <div class="wa-tooltip" id="waTooltip">
+            <span class="wa-tooltip__status"></span>
+            <span class="wa-tooltip__text">Chat on WhatsApp</span>
+        </div>
+    </div>
+
+    <!-- ═══ HAMBURGER DRAWER SCRIPT ═══ -->
+    <script>
+        (function () {
+            var hamburger = document.getElementById('hamburger');
+            var drawer = document.getElementById('mobileNavDrawer');
+            if (hamburger && drawer) {
+                hamburger.addEventListener('click', function () {
+                    var isOpen = hamburger.classList.toggle('open');
+                    drawer.classList.toggle('open', isOpen);
+                    drawer.setAttribute('aria-hidden', !isOpen);
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                });
+
+                drawer.addEventListener('click', function (e) {
+                    if (e.target.tagName.toLowerCase() === 'a') {
+                        hamburger.classList.remove('open');
+                        drawer.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        })();
+    </script>
+    <script src="../js/storm.js?v=4.0"></script>
+</body>
+
+</html>
