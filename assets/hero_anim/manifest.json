@@ -1,7 +1,0 @@
-{
-    "height": 720,
-    "width": 1280,
-    "fps": 20,
-    "frameCount": 41,
-    "namePattern": "frame_{0:D3}.webp"
-}
